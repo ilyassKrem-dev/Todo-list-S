@@ -1,9 +1,9 @@
 'use client';
 
-import Tasks from "@/components/tasks/tasks";
+import Homepage from "@/components/Home/homePage";
 
 export default function Home() {
   return (
-    <Tasks />
+    <Homepage />
   )
 }

@@ -9,7 +9,7 @@ export default function Inputs({setAllTasks}:any) {
     }
     const handleClick = () => {
         const taskAdd  = {desc:task,completed:false,id:nanoid()}
-        task && setAllTasks((prev:any) => [...prev,taskAdd])
+        task && setAllTasks((prev:any) => [taskAdd,...prev])
         setTask("")
     }
     return (

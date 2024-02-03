@@ -2,9 +2,10 @@
 
 
 
-export default function Additinfo() {
-
-
+export default function Additinfo({allTasks}:any) {
+    
+    const numT = allTasks.filter((task:any) => task.completed).length
+    
     return (
             <div className="flex justify-between w-[80%] sm:w-[60%]">
                 <div className="flex items-center flex-col font-semibold">
@@ -12,7 +13,7 @@ export default function Additinfo() {
                         Tasks
                     </div>
                     <div className="text-blue-400">
-                        0/0
+                        {allTasks.length}
                     </div>
                 </div>
                 <div className="flex items-center flex-col font-semibold">
@@ -20,7 +21,7 @@ export default function Additinfo() {
                         Finished
                     </div>
                     <div className="text-accent">
-                        0/0
+                        {numT} of {allTasks.length}
                     </div>
                 </div>
 

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 import { useRouter } from "next/navigation";
-
+import Link from "next/link";
 export default function LoginPa() {
     const [userInfo,setUserInfo] = useState({
         email:"",password:""
@@ -35,7 +35,10 @@ export default function LoginPa() {
             })
             const {token} = response.data;
             localStorage.setItem('authToken',token)
-            router.push('/tasks')
+            if(response) {
+                router.push('/tasks')
+            }
+            
         } catch (error:any) {
             if(error.response) {
                 const {data} = error.response
@@ -49,18 +52,27 @@ export default function LoginPa() {
     }
 
     return (
-        <div className="py-36 flex justify-center items-center">
-            <form onSubmit={handleSubmit} className="w-[50%]">
-                {noEmail&&<p>{noEmail}</p>}
+        <div className="py-36 flex justify-center items-center flex-col gap-y-6">
+            <div>
+                <h1 className="h1 text-center text-blue-400">
+                    Login<span className="text-black">:</span>
+                </h1>
+            </div>
+            <form onSubmit={handleSubmit} className="w-[80%] border border-blue-400 p-6 rounded-lg flex flex-col gap-y-6 items-center sm:w-[60%] lg:w-[60%] xl:w-[500px]">
+                {noEmail&&<p className="text-accent font-semibold text-md">{noEmail}</p>}
                 <input type="email" name="email" id="email" autoComplete="on" className="input"
                 placeholder="email" onChange={handleChange} value={userInfo.email}/>
-                {noPass&&<p>{noPass}</p>}
-                {wrongPass&&<p>{wrongPass}</p>}
+                {noPass&&<p className="text-accent font-semibold text-md">{noPass}</p>}
+                {wrongPass&&<p className="text-accent font-semibold text-md">{wrongPass}</p>}
                 <input type="password" name="password" id="password" 
                 className="input" placeholder="password" onChange={handleChange} value={userInfo.password}/>
-                <button>Login</button>
+                <button  className="bg-blue-400 text-white rounded-xl w-[40%] py-2 hover:opacity-60 font-semibold text-lg active:opacity-50 transition-all duration-300 max-[450px]:w-[60%]">Login</button>
+                {error && <p className="text-accent font-semibold text-md">{error}</p>}
             </form>
-            {error && <p>{error}</p>}
+            <div className="flex gap-y-3 flex-col w-[80%] sm:w-[40%] items-center px-6">
+                <Link href={"/signup"} className="bg-blue-400 py-2 text-white rounded-xl w-[30%] xl:w-[130px] text-center font-semibold hover:opacity-60 active:opacity-50 transition-all duration-300 max-[450px]:w-[60%]">Sign up</Link>
+                
+            </div>
         </div>
     )
 }

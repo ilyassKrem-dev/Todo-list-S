@@ -35,7 +35,7 @@ const checkUser = asyncWrapper( async (req,res) => {
         if (!isPasswordValid) {
             return res.status(401).json({ error: 'Incorrect password' });
         }
-        const token = jwt.sign({userId:user._id},process.env.JWT_SECRET,{expiresIn:"3h"})
+        const token = jwt.sign({userId:user._id},process.env.JWT_SECRET,{expiresIn:"5h"})
         res.status(200).json({token,msg:"Login successful"})
 })
 const getUser = (req,res) => {

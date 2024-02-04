@@ -33,7 +33,7 @@ export default function Thetasks({allTasks , setAllTasks}:any) {
                             <div className="flex gap-x-3">
                                 <Customcheckbox task={task} changeHandler={() => handleChange(task.id)} bgColor="blue-400"/>
                                 <div className={`text-black capitalize ${task.completed && "line-through"}`}>
-                                    {task.desc.length < 33 ? task.desc : task.desc.substring(0,33) + "..."}
+                                    {task.task.length < 33 ? task.task : task.task.substring(0,33) + "..."}
                                     {show
                                     && isSelected &&
                                     <Overlay task={task} setShow={setShow} allTasks={allTasks} setAllTasks={setAllTasks}/>

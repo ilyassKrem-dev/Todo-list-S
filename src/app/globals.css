@@ -27,11 +27,11 @@
     @apply h-[52px];
   }
   .input {
-    @apply w-full h-[42px] rounded-lg pl-6 capitalize;
+    @apply w-full h-[42px] rounded-lg pl-3 placeholder:capitalize;
   }
   .input,
   .textarea {
-    @apply bg-white outline-none focus:ring-1 focus:ring-blue-400 border border-black/30 placeholder:text-black/30 placeholder:font-light;
+    @apply bg-white outline-none focus:ring-1 focus:ring-blue-400 border border-black/50 placeholder:text-black/50 placeholder:font-normal placeholder:text-[0.9rem];
   }
   .textarea {
     @apply w-full h-[180px] p-6 capitalize rounded-lg resize-none;

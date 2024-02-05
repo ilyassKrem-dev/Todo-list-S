@@ -16,12 +16,12 @@ export default function Navicons() {
                     </Link>
             </div>
             <div className="hover:text-blue-700 transition-all duration-300">
-                    <Link href={"/"}>
+                    <Link href={"/tasks"}>
                         <FaTasks  className="text-4xl"/>
                     </Link>
             </div>
             <div className="hover:text-blue-700 transition-all duration-300">
-                    <Link href={"/"}>
+                    <Link href={"/account"}>
                         <CgProfile  className="text-4xl"/>
                     </Link>
             </div>

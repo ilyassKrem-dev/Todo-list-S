@@ -12,13 +12,21 @@ export default function Navbar() {
                     <Navicons />
                 </div>
                 <div className=" hidden sm:flex justify-between items-center">
-                    <div className="  hover:text-blue-700 transition-all duration-300">
-                        <Link href={"/"} className="text-2xl">
-                            Home
+                    <div className="flex gap-x-16">
+                        <div className="  hover:text-blue-700 transition-all duration-300">
+                            <Link href={"/"} className="text-2xl">
+                                Home
+                            </Link>
+                        </div>
+                        <div className="  hover:text-blue-700 transition-all duration-300">
+                        <Link href={"/tasks"} className="text-2xl">
+                            Tasks
                         </Link>
                     </div>
+                    </div>
+                    
                     <div className="hover:text-blue-700 transition-all duration-300">
-                        <Link href={"/"}>
+                        <Link href={"/account"}>
                             <CgProfile  className="text-4xl"/>
                         </Link>
                     </div>

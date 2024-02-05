@@ -38,9 +38,12 @@ const checkUser = asyncWrapper( async (req,res) => {
         const token = jwt.sign({userId:user._id},process.env.JWT_SECRET,{expiresIn:"5h"})
         res.status(200).json({token,msg:"Login successful"})
 })
-const getUser = (req,res) => {
-    res.status(200).json({msg:"test "})
-}
+const getUser = asyncWrapper(async (req,res) => {
+    const token = req.headers.authorization.split(' ')[1]
+    const decoded = jwt.verify(token,process.env.JWT_SECRET)
+    const user = await User.findById({_id:decoded.userId})
+    res.status(200).json({user})
+})
 const updateUser = (req,res) => {
     res.status(200).json({msg:"test"})
 }

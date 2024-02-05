@@ -28,9 +28,7 @@ const addTask = async(req,res) => {
     }
     
 }
-const getTask = (req,res) => {
-    res.status(200).json({msg:"test"})
-}
+
 const updateTask = asyncWrapper( async(req,res) => {
     const taskId = req.params.id;
     const {taskName,completed} = req.body
@@ -55,4 +53,4 @@ const deleteTask = asyncWrapper(async(req,res) => {
     }
     res.status(200).send()
 })
-module.exports = {getAllTasks,addTask,getTask,updateTask,deleteTask}
+module.exports = {getAllTasks,addTask,updateTask,deleteTask}

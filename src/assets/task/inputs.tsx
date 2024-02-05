@@ -9,12 +9,10 @@ export default function Inputs({setAllTasks}:any) {
     }
     const handleClick = async () => {
         try {
-            const currentDate = new Date().toLocaleDateString('en-GB');
             const token = localStorage.getItem('authToken')
             if(token) {
                 await axios.post("/api/tasks",{
                     task:task,
-                    date:currentDate,
                 } , {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -29,7 +27,7 @@ export default function Inputs({setAllTasks}:any) {
                   setAllTasks(response.data.tasks);
                   setTask("")
             } else {
-                const taskAdd  = {task:task,completed:false,id:nanoid()}
+                const taskAdd  = {task:task,completed:false,_id:nanoid()}
                 task && setAllTasks((prev:any) => [taskAdd,...prev])
                 setTask("")
             }

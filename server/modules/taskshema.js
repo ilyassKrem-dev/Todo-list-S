@@ -6,9 +6,6 @@ const taskShema = new mongoose.Schema({
         type:String,
         required:true
     },
-    taskDate: {
-        type:Date,
-    },
     completed: {
         type: Boolean,
         default:false
@@ -18,7 +15,7 @@ const taskShema = new mongoose.Schema({
         ref:'User',
         required:true,
     }
-})
+},{timestamps:true})
 
 const Task = mongoose.model('Task',taskShema)
 

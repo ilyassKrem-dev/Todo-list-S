@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import Customcheckbox from "@/assets/custumCheckbox/checkboxCust";
-
+import axios from "axios";
 
 export default function Overlay({task , setShow , setAllTasks,allTasks}:any) {
     const [taskDesc, setTaskDesc] = useState({
-        description: task.desc,
+        description: task.task,
         completed: task.completed,
-        id:task.id
+        id:task._id
       });
     function handleChange(e:any) {
         e.stopPropagation();
@@ -33,17 +33,36 @@ export default function Overlay({task , setShow , setAllTasks,allTasks}:any) {
           document.body.removeEventListener("click", handleOutsideClick);
         };
     }, []);
-    function handleSave() {
-        setAllTasks((prev:any) => {
-            const editTask = prev.map((ta:any) => {
-                if(ta.id === task.id) {
-                    return {...ta,desc:taskDesc.description,completed:taskDesc.completed}
-                } else {
-                    return ta
-                }
-            })
-            return editTask
-        })
+    async function handleSave(id:string) {
+        try {
+            const token = localStorage.getItem('authToken')
+            if(token) {
+                await axios.patch(`/api/tasks/${id}`,{
+                    taskName:taskDesc.description,
+                    completed:taskDesc.completed
+                })
+                const response = await axios.get('/api/tasks',{
+                    headers:{
+                        Authorization:`Bearer ${token}`
+                    }
+                })
+                setAllTasks(response.data.tasks)
+            } else {
+                setAllTasks((prev:any) => {
+                    const editTask = prev.map((ta:any) => {
+                        if(ta._id === id) {
+                            return {...ta,task:taskDesc.description,completed:taskDesc.completed}
+                        } else {
+                            return ta
+                        }
+                    })
+                    return editTask
+                })
+            }
+        } catch (error) {
+            console.log(error)
+        }
+        
     }
     return (
         <div className="fixed top-0 left-0 bottom-0 right-0 flex items-center justify-center z-40">
@@ -60,7 +79,7 @@ export default function Overlay({task , setShow , setAllTasks,allTasks}:any) {
                     <Customcheckbox task={taskDesc} changeHandler={handleChange} bgColor="green-600"/>
                 </div>
                 <button className=" bg-blue-400 text-white p-3 px-10 rounded-lg text-lg hover:opacity-60 transition-all duration-300" onClick={(e) => {
-                    handleSave();
+                    handleSave(task._id);
                     setShow(false)
                 }}>Save</button>
                 <div className="absolute top-2 right-2 hover:opacity-70 active:opacity-50 transition-all duration-200 cursor-pointer" onClick={() => setShow(false)}>

@@ -22,10 +22,7 @@ export default function LoginPa() {
             </div>
         )
     }
-    const leaveAcc = () => {
-        localStorage.removeItem('authToken')
-        window.location.href = "/login"
-    }
+    
     return (
         <div className="py-36 flex justify-center items-center flex-col gap-y-6">
             {!loggedIn

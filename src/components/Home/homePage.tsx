@@ -16,11 +16,20 @@ export default function Homepage() {
                         Authorization:`Bearer ${token}`
                     }
                 })
-                    .then(res => res.json())
+                    .then(res => {
+                        if(!res.ok) {
+                            throw new Error('Token expired');
+                        }
+                        return res.json()
+                    })
                         .then(data => {
                             setUser(data.user.username)
                             setLogedIn(true)})
-                
+                                .catch(() => {
+                                    localStorage.removeItem('authToken')
+                                    setLogedIn(false)
+                                
+                                })
             } else {
                 setLogedIn(false)
             }

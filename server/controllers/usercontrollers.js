@@ -35,7 +35,7 @@ const checkUser = asyncWrapper( async (req,res) => {
         if (!isPasswordValid) {
             return res.status(401).json({ error: 'Incorrect password' });
         }
-        const token = jwt.sign({userId:user._id},process.env.JWT_SECRET,{expiresIn:"5h"})
+        const token = jwt.sign({userId:user._id},process.env.JWT_SECRET,{expiresIn:"3h"})
         res.status(200).json({token,msg:"Login successful"})
 })
 const getUser = asyncWrapper(async (req,res) => {
@@ -44,9 +44,29 @@ const getUser = asyncWrapper(async (req,res) => {
     const user = await User.findById({_id:decoded.userId})
     res.status(200).json({user})
 })
-const updateUser = (req,res) => {
-    res.status(200).json({msg:"test"})
-}
+const updateUser = asyncWrapper( async (req,res) => {
+    const token = (req.headers.authorization).split(' ')[1]
+    const decoded = jwt.verify(token,process.env.JWT_SECRET)
+    const {username,oldPass,newPass} = req.body
+    const user= await User.findById(decoded.userId);
+    if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+    }
+    if(username) {
+        user.username = username
+    }
+   
+    if(oldPass && newPass) {
+        const isOldValid = await user.comparePassword(oldPass)
+        if(!isOldValid) {
+            return res.status(400).json({error:"Old password is incorrect"})
+        }
+
+        user.password = newPass
+    }
+    await user.save()
+    res.status(200).json({user})
+})
 const deleteUser = (req,res) => {
     res.status(200).json({msg:"test"})
 }

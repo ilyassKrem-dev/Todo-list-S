@@ -1,14 +1,14 @@
 import Link from "next/link"
 import { useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
+import Userinfonav from "./userInfoNav";
 export default function Accountnav() {
-    const [user,setUser] = useState()
-    const [logedIn,setLogedIn] = useState<boolean | null>(null)
+    const [user,setUser] = useState("")
+    const [loggedIn,setLoggedIn] = useState<boolean | null>(null)
     const [show,setShow] = useState<boolean>(false)
     useEffect(() => {
             const token = localStorage.getItem('authToken')
             if(token) {
-                
                 fetch('/api/account', {
                     method:'GET',
                     headers:{
@@ -23,26 +23,31 @@ export default function Accountnav() {
                     })
                         .then(data => {
                             setUser(data.user.username)
-                            setLogedIn(true)})
+                            setLoggedIn(true)})
                                 .catch(() => {
                                     localStorage.removeItem('authToken')
-                                    setLogedIn(false)
+                                    setLoggedIn(false)
                                 
                                 })
             } else {
-                setLogedIn(false)
+                setLoggedIn(false)
             }
-           
-        
     },[])
-
+    if(loggedIn === null) {
+        return (
+            <div className="flex justify-center items-center"></div>
+        )
+    }
+    
     return (
-        <div className="hover:text-blue-700 transition-all duration-300">
-            <Link href={"/account"} className="hidden">
+        <div>
+            <Link href={"/account"} className="hidden hover:text-blue-700 transition-all duration-300">
                 <CgProfile  className="text-4xl"/>
             </Link>
-            <div className="sm:flex hidden">
-                <CgProfile  className="text-4xl cursor-pointer"/>
+            <div className="sm:flex hidden relative items-center justify-center">
+                <CgProfile onClick={() => setShow(!show)}  className="text-4xl cursor-pointer hover:text-blue-700 transition-all duration-300"/>
+                {show&&
+                <Userinfonav user={user} loggedIn={loggedIn} setShow={setShow} setLoggedIn={setLoggedIn}/>}
             </div>
         </div>
     )

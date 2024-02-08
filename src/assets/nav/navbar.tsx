@@ -6,7 +6,7 @@ export default function Navbar() {
     
     return (
         <div className=" bg-blue-400 p-6 fixed w-full bottom-0 sm:top-0 sm:bottom-auto z-50 "> 
-            <div className=" text-white font-bold gap-x-24">
+            <div className=" text-white font-bold gap-x-24 sm:px-12">
                 <div className="flex items-center justify-center  gap-x-24 sm:hidden max-[300px]:gap-x-16">
                     <Navicons />
                 </div>

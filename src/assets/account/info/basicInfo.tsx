@@ -31,6 +31,10 @@ export default function Basicinfo(props:any) {
             if (response) {
               props.setUser(response.data.user);
               props.setIsEditing(false);
+              setTimeout(() => {
+                window.location.href = "/account"
+              },2000)
+              
             }
           }
         } catch (error) {

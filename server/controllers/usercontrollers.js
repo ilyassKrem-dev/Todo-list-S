@@ -1,7 +1,7 @@
 const asyncWrapper = require('../middleware/async')
 const User = require('../modules/usershema')
 const jwt = require('jsonwebtoken')
-
+const Task = require('../modules/taskshema')
 const addUser = async (req,res) => {
     try {
         const {username,email,password} = req.body
@@ -70,6 +70,7 @@ const updateUser = asyncWrapper( async (req,res) => {
 const deleteUser = asyncWrapper(async (req,res) => {
     const token = (req.headers.authorization).split(' ')[1]
     const decoded = jwt.verify(token,process.env.JWT_SECRET)
+    await Task.deleteMany({user:decoded.userId})
     await User.findByIdAndDelete({_id:decoded.userId})
     res.status(200).send()
 

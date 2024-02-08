@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+
 import axios from "axios"
 import Link from "next/link";
 
@@ -7,7 +7,6 @@ export default function Loginform({userInfo,setUserInfo}:any) {
     const [error, setError] = useState<string>("");
     const [noPass,setNoPass] = useState('');
     const [noEmail,setNoEmail] = useState('');const [wrongPass,setWrongPass] = useState('')
-    const router = useRouter()
     const handleChange = (e:any) => {
         const {name,value} = e.target;
         setUserInfo((prev:any) => {
@@ -34,7 +33,7 @@ export default function Loginform({userInfo,setUserInfo}:any) {
             const {token} = response.data;
             localStorage.setItem('authToken',token)
             if(response) {
-                router.push('/tasks')
+                window.location.href = "/"
             }
             
         } catch (error:any) {

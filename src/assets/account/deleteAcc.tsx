@@ -20,7 +20,7 @@ export default function Deleteacc() {
                     localStorage.removeItem('authToken')
                     setTimeout(() => {
                         window.location.href = "/"
-                    },4000)
+                    },2000)
                 }
             }
         } catch (error) {

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import Changeinfo from "@/assets/account/changeInfo";
+import Pageaccess from "@/assets/account/noAccess/pageAccess";
 export default function Account() {
 
-    const [logedIn , setLogedIn] = useState<boolean | null>(null)
+    const [loggedIn , setLoggedIn] = useState<boolean | null>(null)
     
     const [user,setUser] = useState<any>()
    
@@ -26,23 +27,27 @@ export default function Account() {
                 })
                     .then(data => {
                         setUser(data.user)
-                        setLogedIn(true)})
+                        setLoggedIn(true)})
                         .catch(() => {
                             router.push('/login')
                         })
         } else {
-            setLogedIn(false)
+            setLoggedIn(false)
         }
        
     },[])
-
+    if(loggedIn === null) {
+        return (
+            <div className="flex justify-center items-center">
+                
+            </div>
+        )
+    }
     return (
         <div className="flex justify-center items-center py-36">
-            {!logedIn
+            {!loggedIn
             ?
-            <div>
-                <h1 className="h1">Not</h1>
-            </div>
+            <Pageaccess />
             :
             <Changeinfo user={user} setUser={setUser}/>}
         </div>

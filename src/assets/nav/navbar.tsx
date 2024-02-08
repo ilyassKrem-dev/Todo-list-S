@@ -1,8 +1,7 @@
 "use client"
 import Link from "next/link"
-import { CgProfile } from "react-icons/cg";
 import Navicons from "./nav-icons";
-
+import Accountnav from "./accountNav/Accountnav";
 export default function Navbar() {
     
     return (
@@ -25,11 +24,7 @@ export default function Navbar() {
                         </div>
                     </div>
                     
-                    <div className="hover:text-blue-700 transition-all duration-300">
-                        <Link href={"/account"}>
-                            <CgProfile  className="text-4xl"/>
-                        </Link>
-                    </div>
+                    <Accountnav />
                 </div>
             </div>
         </div>

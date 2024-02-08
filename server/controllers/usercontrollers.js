@@ -67,7 +67,11 @@ const updateUser = asyncWrapper( async (req,res) => {
     await user.save()
     res.status(200).json({user})
 })
-const deleteUser = (req,res) => {
-    res.status(200).json({msg:"test"})
-}
+const deleteUser = asyncWrapper(async (req,res) => {
+    const token = (req.headers.authorization).split(' ')[1]
+    const decoded = jwt.verify(token,process.env.JWT_SECRET)
+    await User.findByIdAndDelete({_id:decoded.userId})
+    res.status(200).send()
+
+})
 module.exports = {addUser,checkUser,getUser,updateUser,deleteUser}

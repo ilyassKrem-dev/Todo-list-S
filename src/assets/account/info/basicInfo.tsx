@@ -2,6 +2,7 @@
 import Image from "next/image"
 import { MdEdit, MdCheck } from "react-icons/md";
 import axios from "axios";
+import {motion} from "framer-motion"
 export default function Basicinfo(props:any) {
 
     const calculateInputWidth = (text: string) => {
@@ -11,6 +12,9 @@ export default function Basicinfo(props:any) {
     async function updateUser() {
         try {
           const token = localStorage.getItem("authToken");
+          if(props.user.username == props.newInfo.username) {
+            return props.setIsEditing(false);
+          }
           if (token) {
             await axios.patch(
               "/api/account",
@@ -66,8 +70,15 @@ export default function Basicinfo(props:any) {
                 />
               </div>
             ) : (
-              <div className="flex gap-x-4 items-center">
-                <input
+              <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+              className="flex gap-x-4 items-center">
+                <motion.input
+                 initial={{ opacity: 0 }}
+                 animate={{ opacity: 1 }}
+                 transition={{ duration: 0.3 }}
                   type="text"
                   name="username"
                   autoComplete="off"
@@ -82,13 +93,14 @@ export default function Basicinfo(props:any) {
                   className="text-green-500 cursor-pointer hover:opacity-50 transition-all duration-300"
                   onClick={updateUser}
                 />
-                <div
-                  onClick={() =>props.handleClose("name")}
-                  className="text-accent hover:opacity-50 transition-all duration-300 cursor-pointer"
+                <motion.div
+                
+                onClick={() =>props.handleClose("name")}
+                className="text-accent hover:opacity-50  transition-all duration-300 cursor-pointer"
                 >
                   X
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             )}
           </div>
         </div>

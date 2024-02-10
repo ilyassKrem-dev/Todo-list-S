@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { MdEdit} from "react-icons/md";
 import axios from "axios";
-
+import {motion} from "framer-motion"
 
 export default function Conctactinfo({user , newInfo,setPassEdit,passEdit,handleChange,handleClose,handleEdit}:any) {
     const [errorP, setErrorP] = useState("");
@@ -97,7 +97,10 @@ export default function Conctactinfo({user , newInfo,setPassEdit,passEdit,handle
               {!passEdit ? (
                 <p className="text-4xl font-bold">{maskedPassword}</p>
               ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-y-3 items-center">
+                <motion.form
+                initial={{scale:0}}
+                animate={{scale:1}}
+                onSubmit={handleSubmit} className="flex flex-col gap-y-3 items-center">
                     {oldError&&<p className="text-accent">{oldError}</p>}
                   <input
                     className="input border-blue-400"
@@ -145,7 +148,7 @@ export default function Conctactinfo({user , newInfo,setPassEdit,passEdit,handle
                       Cancel
                     </button>
                   </div>
-                </form>
+                </motion.form>
               )}
               {succesP && (
                 <p className="text-green-500 font-semibold text-lg">

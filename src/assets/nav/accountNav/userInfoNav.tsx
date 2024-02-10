@@ -2,7 +2,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-
+import { motion } from "framer-motion";
 export default function Userinfonav({user,loggedIn,setShow,setLoggedIn}:any) {
 
     useEffect(() => {
@@ -24,7 +24,10 @@ export default function Userinfonav({user,loggedIn,setShow,setLoggedIn}:any) {
     }, []);
     const pathname = usePathname()
     return (
-        <div className={`absolute ${loggedIn ? "-bottom-[15.5rem]" : "-bottom-[14rem]"} bg-white text-black border border-blue-400 rounded-lg p-1 py-6 px-4 background`}>
+        <motion.div 
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        className={`absolute ${loggedIn ? "-bottom-[15.5rem]" : "-bottom-[14rem]"} bg-white text-black border border-blue-400 rounded-lg p-1 py-6 px-4 background`}>
             <div className={`absolute -top-[0.5rem] ${loggedIn ? "right-[4.7rem]" : "right-[3.7rem]"} right-[4.7rem]  border-solid border-l-transparent border-l-8 border-b-8 border-r-8 border-b-blue-400 border-r-transparent`} >
             </div>
             {loggedIn
@@ -54,6 +57,6 @@ export default function Userinfonav({user,loggedIn,setShow,setLoggedIn}:any) {
                     <Link onClick={() => setShow(false)}   href={"/signup"} className={` cursor-pointer bg-accent text-white font-semibold p-2 px-5 rounded-lg hover:opacity-50 transition-all duration-300`}>Sign up</Link>
                 </div>
             </div>}
-        </div>
+        </motion.div>
     )
 }

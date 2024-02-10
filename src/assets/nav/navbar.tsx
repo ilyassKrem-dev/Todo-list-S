@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link"
-import Navicons from "./nav-icons";
+import Navicons from "./icons/nav-icons";
 import Accountnav from "./accountNav/Accountnav";
 export default function Navbar() {
     

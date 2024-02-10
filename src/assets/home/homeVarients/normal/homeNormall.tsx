@@ -1,6 +1,5 @@
 
 import Homeinputs from "@/assets/home/Inputs/inputs"
-import Brush from "@/assets/home/bg/brush"
 
 export default function Homenormal() {
 
@@ -12,7 +11,7 @@ export default function Homenormal() {
                 </span>  list</h1>
             </div>
             <Homeinputs />
-            <Brush />
+
         </>
     )
 }

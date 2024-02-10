@@ -33,7 +33,7 @@ export default function Basicinfo(props:any) {
               props.setIsEditing(false);
               setTimeout(() => {
                 window.location.href = "/account"
-              },2000)
+              },1000)
               
             }
           }

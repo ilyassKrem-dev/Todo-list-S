@@ -49,7 +49,7 @@ export default function Conctactinfo({user , newInfo,setPassEdit,passEdit,handle
               setSuccesP("Password changed");
               setTimeout(() => {
                 window.location.href = '/account'
-              },5000)
+              },3000)
             }
           }
         } catch (error:any) {

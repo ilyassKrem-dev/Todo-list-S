@@ -45,7 +45,7 @@ export default function Accountnav() {
                 <CgProfile  className="text-4xl"/>
             </Link>
             <div className="sm:flex hidden relative items-center justify-center">
-                <CgProfile onClick={() => setShow(!show)}  className="text-4xl cursor-pointer hover:text-blue-700 transition-all duration-300"/>
+                <CgProfile onClick={() => setShow(prev => !prev)}  className="text-4xl cursor-pointer hover:text-blue-700 transition-all duration-300 profile-icon"/>
                 {show&&
                 <Userinfonav user={user} loggedIn={loggedIn} setShow={setShow} setLoggedIn={setLoggedIn}/>}
             </div>

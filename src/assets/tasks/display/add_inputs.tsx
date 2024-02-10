@@ -2,7 +2,7 @@
 import { nanoid } from "nanoid"
 import { useState } from "react"
 import axios from "axios"
-export default function Inputs({setAllTasks}:any) {
+export default function Add_inputs({setAllTasks}:any) {
     const [task,setTask] = useState<string>("")
     function handleChange(e:any) {
         setTask(e.target.value)

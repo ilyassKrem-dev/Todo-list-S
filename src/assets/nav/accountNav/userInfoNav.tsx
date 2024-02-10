@@ -8,7 +8,9 @@ export default function Userinfonav({user,loggedIn,setShow,setLoggedIn}:any) {
     useEffect(() => {
         function handleOutsideClick(event: any) {
           const overlay = document.querySelector(".background");
-          if (overlay && !overlay.contains(event.target)) {
+          const profileIcon = document.querySelector(".profile-icon");
+          if (overlay && !overlay.contains(event.target) && 
+          profileIcon && !profileIcon.contains(event.target))  {
             
             setShow(false);
           }

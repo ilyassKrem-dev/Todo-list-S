@@ -1,8 +1,8 @@
 
 import {useState } from "react";
-import Titleinfo from "./info/titleInfo";
-import Basicinfo from "./info/basicInfo";
-import Conctactinfo from "./info/contactInfo";
+import Titleinfo from "../info/titleInfo";
+import Basicinfo from "../info/basicInfo";
+import Conctactinfo from "../info/contactInfo";
 import Deleteacc from "./deleteAcc";
 export default function Changeinfo({ user, setUser }: any) {
   const [isEditing, setIsEditing] = useState(false);

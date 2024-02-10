@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import Changeinfo from "@/assets/account/changeInfo";
+import Changeinfo from "@/assets/account/Access/changeInfo";
 import Pageaccess from "@/assets/account/noAccess/pageAccess";
+
 export default function Account() {
 
     const [loggedIn , setLoggedIn] = useState<boolean | null>(null)
@@ -44,7 +45,8 @@ export default function Account() {
         )
     }
     return (
-        <div className="flex justify-center items-center py-36">
+        <div className="flex justify-center items-center pt-12 pb-36  sm:py-36">
+
             {!loggedIn
             ?
             <Pageaccess />

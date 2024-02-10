@@ -1,8 +1,8 @@
 
 import { useState } from "react";
 import { MdEdit , MdDelete  } from "react-icons/md";
-import Overlay from "./overlay/overlay";
-import Customcheckbox from "../../custumCheckbox/checkboxCust";
+import Overlay from "../overlay/overlay";
+import Customcheckbox from "../custom_checkbox/checkboxCust";
 import axios from "axios";
 export default function Thetasks({allTasks , setAllTasks}:any) {
 

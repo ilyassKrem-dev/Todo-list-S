@@ -1,11 +1,12 @@
-import Logo from "@/assets/Images/logo"
-import Inputs from "@/assets/task/inputs"
+
+import Add_inputs from "@/assets/tasks/display/add_inputs"
 import { useEffect, useState } from "react"
-import Additinfo from "@/assets/task/tasks/addit-info"
-import Thetasks from "@/assets/task/tasks/Thetasks"
-import Taskimg from "@/assets/Images/tasksBg"
-import Particales from "@/assets/task/particles/particles"
+import Additinfo from "@/assets/tasks/Addition/addit-info"
+import Thetasks from "@/assets/tasks/display/Thetasks"
 import axios from "axios"
+import Totop from "@/assets/tasks/Addition/Totop"
+import Logo_bg from "@/assets/tasks/logo_bg/logo_bg"
+
 interface Task {
     desc:String,
     completed:Boolean,
@@ -13,10 +14,8 @@ interface Task {
 }
 export default function Tasks() {
     const [allTasks,setAllTasks] = useState<Task[]>([])
-
     const isLocalStorageAvailable = typeof localStorage !== 'undefined';
-
-
+    
     const fetchData = async () => {
         try {
             const token = localStorage.getItem('authToken');
@@ -45,7 +44,6 @@ export default function Tasks() {
     };
     useEffect(() => {
         fetchData();
-        
     }, []);
     useEffect(() => {
         const token = localStorage.getItem('authToken');
@@ -56,16 +54,11 @@ export default function Tasks() {
       }, [allTasks, isLocalStorageAvailable]);
     return (
         <div className="flex items-center justify-center sm:py-36 py-28 flex-col gap-y-12 h-full">
-            <Logo />
-            <Taskimg />
-            
-            <div className="font-semibold text-xl sm:text-2xl">
-                <h1>Create Your first <span className="text-blue-400">Todo</span> task</h1>
-            </div>
-            <Inputs setAllTasks={setAllTasks}/>
+            <Logo_bg />
+            <Add_inputs setAllTasks={setAllTasks}/>
             <Additinfo allTasks={allTasks}/>
             <Thetasks allTasks={allTasks}setAllTasks={setAllTasks}/>
-            <Particales /> 
+            <Totop /> 
         </div>
     )
 }

@@ -9,6 +9,10 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Todo-list",
   description: "...",
+  icons:{
+    icon: "/icons/favicon.png"
+    
+  }
 };
 
 export default function RootLayout({
@@ -18,6 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        
+      </head>
       <body className={roboto.className}>
         <Navbar />
         {children}

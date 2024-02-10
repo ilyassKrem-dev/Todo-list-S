@@ -25,9 +25,6 @@ const config: Config = {
         secondary: '#393A47',
         accent: '#F13024',
       },
-      backgroundImage: {
-        paint: 'url("/bg-paint.png")',
-      },
       fontFamily: {
         poppins: [`var(--font-poppins)`, 'sans-serif'],
         sora: [`var(--font-sora)`, 'sans-serif'],

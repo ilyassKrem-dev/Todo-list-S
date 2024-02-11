@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/assets/nav/navbar";
+import AnimatedWrapper from "./Wrapper";
 const roboto = Roboto({ 
   subsets: ['latin'],
   weight: ["100"  , "300" , "400" , "500" ,  "700" , "900"] })
@@ -22,13 +23,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        
-      </head>
       <body className={roboto.className}>
         <Navbar />
-        {children}
-        </body>
+        <AnimatedWrapper>
+          {children}
+        </AnimatedWrapper>
+      </body>
     </html>
   );
 }

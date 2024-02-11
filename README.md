@@ -1,30 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+### About
 
-First, run the server:
+This is a Todo-list website with nodejs,
 
-```bash
-npm start
-# or
-yarn start
-# or
-pnpm start
-# or
-bun start
-```
+![Todolist][Todolist] 
+![Todolist2][Todolist2]
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Built With
+* [![Next][Next.js]][Next-url]
+* [![React][React.js]][React-url]
+* [![TailwindCSS][TailwindCss]][TailwindCss-url]
+* [![Framer][Framer]][Framer-url]
+* [![Express.js][Express.js]][Express.js-url]
+* [![NodeJS][NodeJS]][NodeJS-url]
+* [![MongoDB][MongoDB]][MongoDB-url]
+ 
+###  Features
+- Simple design
+- Responsive.
+- User Account System
+  
+### Start the website
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Add a MONGO_URL from [mongoDB](https://www.mongodb.com/) to the `.env` file
+2. Add your own JWT_SECRET or generated one to the `.env` file
+3. Clone the repo
+   ```sh
+   gh repo clone ilyassKrem-dev/Todo-list-S
+   ```
+   
+4. Run
+   ```sh
+   npm install
+   npm start
+   ```
+  
+<!-- MARKDOWN LINKS & IMAGES -->
+[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Next-url]: https://nextjs.org/
+[Framer]:https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=blue
+[Framer-url]:https://www.framer.com/motion/
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[TailwindCss]:https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white
+[TailwindCss-url]:https://tailwindcss.com/
+[Express.js]:https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB
+[Express.js-url]:https://expressjs.com/
+[NodeJS]:https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white
+[NodeJS-url]:https://nodejs.org/
+[MongoDB]:https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white
+[MongoDB-url]:https://www.mongodb.com/
+[Todolist]:https://www.dropbox.com/scl/fi/8wvoai8by6mjrp2yqh9pr/Capture1.jpg?rlkey=25aicz2k9aastv77k33eyq1mk&raw=1
+[Todolist2]:https://www.dropbox.com/scl/fi/sid5vuully250k6bu9rzp/Todolist.jpg?rlkey=thbknv8y7e0c69lsc7ksjef16&raw=1

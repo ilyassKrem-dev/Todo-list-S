@@ -17,9 +17,7 @@ export default function LoginPa() {
     } , [])
     if(loggedIn === null) {
         return (
-            <div className="flex justify-center items-center text-blue-400">
-                Loading...
-            </div>
+            <div className="flex justify-center items-center text-blue-400"> </div>
         )
     }
     

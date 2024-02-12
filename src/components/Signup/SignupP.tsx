@@ -18,9 +18,7 @@ export default function SignupPa() {
     },[])
     if(loggedIn === null) {
         return (
-            <div className="flex justify-center items-center text-blue-400">
-                Loading...
-            </div>
+            <div className="flex justify-center items-center text-blue-400"></div>
         )
     }
     return (

@@ -25,6 +25,7 @@ export default function Homelogedin(props:any) {
     const handleClick = (path:any) => {
         if(path === "/") {
             localStorage.removeItem('authToken');
+            localStorage.removeItem('loginTime');
             window.location.href = path;
         }
     }

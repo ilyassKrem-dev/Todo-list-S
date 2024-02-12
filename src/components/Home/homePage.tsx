@@ -20,7 +20,7 @@ export default function Homepage() {
                     storedLoginTime.setDate(storedLoginTime.getDate() - 1);
                 }
                 storedLoginTime.setHours(storedHours);
-                
+
                 if(storedLoginTime < HoursAgo) {
                     localStorage.removeItem('authToken');
                     localStorage.removeItem('loginTime');
@@ -52,6 +52,7 @@ export default function Homepage() {
            
         
     },[])
+
     if (logedIn === null) {
         return (
           <div className="flex justify-center items-center text-blue-400"></div>

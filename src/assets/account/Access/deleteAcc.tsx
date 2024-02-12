@@ -18,6 +18,7 @@ export default function Deleteacc() {
                 if(response) {
                     setChangeText('Your account is deleted')
                     localStorage.removeItem('authToken')
+                    localStorage.removeItem('loginTime');
                     setTimeout(() => {
                         window.location.href = "/"
                     },2000)

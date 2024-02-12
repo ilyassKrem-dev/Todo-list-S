@@ -31,7 +31,7 @@ export default function Loginform({userInfo,setUserInfo}:any) {
                 password:userInfo.password
             })
             const loginTime = new Date();
-            
+
             localStorage.setItem('loginTime', loginTime.getHours().toString());
 
             const {token} = response.data;

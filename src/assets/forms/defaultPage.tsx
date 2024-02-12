@@ -3,6 +3,7 @@ import Link from "next/link"
 export default function Defaultpage({path}:any) {
     const leaveAcc = () => {
         localStorage.removeItem('authToken')
+        localStorage.removeItem('loginTime');
         window.location.href = `/${path}`
     }
     return (

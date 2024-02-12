@@ -44,6 +44,7 @@ export default function Userinfonav({user,loggedIn,setShow,setLoggedIn}:any) {
                     <button onClick={() => {
                         setShow(false)
                         localStorage.removeItem('authToken')
+                        localStorage.removeItem('loginTime');
                         setLoggedIn(false)
                         window.location.href = pathname
                     }}  className={` cursor-pointer bg-accent text-white font-semibold p-2 px-6 rounded-lg hover:opacity-50 transition-all duration-300`}>Sign out</button>

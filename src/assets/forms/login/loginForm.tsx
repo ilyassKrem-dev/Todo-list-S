@@ -30,6 +30,10 @@ export default function Loginform({userInfo,setUserInfo}:any) {
                 email:userInfo.email.toLowerCase(),
                 password:userInfo.password
             })
+            const loginTime = new Date();
+            
+            localStorage.setItem('loginTime', loginTime.getHours().toString());
+
             const {token} = response.data;
             localStorage.setItem('authToken',token)
             if(response) {

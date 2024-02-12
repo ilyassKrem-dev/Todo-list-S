@@ -8,7 +8,22 @@ export default function Accountnav() {
     const [show,setShow] = useState<boolean>(false)
     useEffect(() => {
             const token = localStorage.getItem('authToken')
-            if(token) {
+            const loginTime = localStorage.getItem('loginTime');
+            if(token && loginTime) {
+                const HoursAgo = new Date();
+                HoursAgo.setHours(HoursAgo.getHours() - 3);
+                const storedLoginTime = new Date();
+                const storedHours = parseInt(loginTime);
+                if (storedHours > new Date().getHours()) {
+                    
+                    storedLoginTime.setDate(storedLoginTime.getDate() - 1);
+                }
+                storedLoginTime.setHours(storedHours);
+                if(storedLoginTime < HoursAgo) {
+                    localStorage.removeItem('authToken');
+                    localStorage.removeItem('loginTime');
+                    return setLoggedIn(false);
+                } 
                 fetch('/api/account', {
                     method:'GET',
                     headers:{
